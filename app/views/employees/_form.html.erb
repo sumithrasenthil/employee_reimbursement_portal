@@ -27,13 +27,13 @@
   </div>
 
   <div>
-    <%= form.label :designation, style: "display: block" %>
-    <%= form.number_field :designation %>
+     <%= form.label :designation %>
+     <%= form.collection_select :designation, Employee.designations.keys, :to_s, :humanize, prompt: 'Select Designation' %>
   </div>
 
   <div>
-    <%= form.label :department_id, style: "display: block" %>
-    <%= form.text_field :department_id %>
+    <%= form.label :department_id, 'Department' %>
+    <%= form.collection_select :department_id, @departments, :id, :name, prompt: 'Select Department' %>
   </div>
 
   <div>

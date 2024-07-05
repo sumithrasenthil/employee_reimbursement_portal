@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.all.preload(:department)
   end
 
   # GET /employees/1 or /employees/1.json
@@ -13,14 +13,17 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    @departments = Department.all
   end
 
   # GET /employees/1/edit
   def edit
+    @departments = Department.all
   end
 
   # POST /employees or /employees.json
   def create
+    # @departments = Department.all
     @employee = Employee.new(employee_params)
 
     respond_to do |format|
