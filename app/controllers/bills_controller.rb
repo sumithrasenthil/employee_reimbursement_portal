@@ -13,10 +13,12 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
+    @employees = Employee.all
   end
 
   # GET /bills/1/edit
   def edit
+    @employees = Employee.all
   end
 
   # POST /bills or /bills.json
@@ -65,6 +67,6 @@ class BillsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bill_params
-      params.require(:bill).permit(:amount, :type, :employee_id)
+      params.require(:bill).permit(:amount, :category, :employee_id)
     end
 end

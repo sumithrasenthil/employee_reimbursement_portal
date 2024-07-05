@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_05_155157) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_05_161409) do
   create_table "bills", force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2
-    t.integer "type"
+    t.integer "category"
     t.integer "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
