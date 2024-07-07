@@ -1,32 +1,104 @@
-<%= form_with(model: bill) do |form| %>
-  <% if bill.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
 
-      <ul>
-        <% bill.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <title>Edit Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <h1>Edit Bill</h1>
+
+    <%= form_with(model: @bill) do |form| %>
+        <% if @bill.errors.any? %>
+            <div class="error-message">
+                <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+                <ul>
+                    <% @bill.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
-  </div>
+        <div class="form-group">
+            <%= form.label :amount, style: "display: block" %>
+            <%= form.text_field :amount %>
+        </div>
 
-  <div>
-     <%= form.label :category %>
-     <%= form.collection_select :category, Bill.categories.keys, :to_s, :humanize, prompt: 'Select Type' %>
-  </div>
+        <div class="form-group">
+            <%= form.label :category, style: "display: block" %>
+            <%= form.select :category, Bill.categories.keys.map { |key| [key.humanize, key] }, { prompt: 'Select Type' } %>
+        </div>
 
-  <div>
-    <%= form.label :employee_id, 'Employee' %>
-    <%= form.collection_select :employee_id, @employees, :id, :fullname, prompt: 'Select Employee' %>
-  </div>
+        <div class="form-group">
+            <%= form.label :employee_id, 'Employee', style: "display: block" %>
+            <%= form.select :employee_id, options_for_select(@employees.map { |e| [e.fullname, e.id] }), { prompt: 'Select Employee' } %>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+        <div class="form-group">
+            <%= form.submit "Save", class: "submit-button" %>
+        </div>
+    <% end %>
+</main>
+
+</body>
+</html>

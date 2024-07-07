@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :department
+  has_many :bills, dependent: :destroy
   validates :first_name, :last_name, :designation, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 

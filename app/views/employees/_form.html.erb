@@ -1,42 +1,110 @@
-<%= form_with(model: employee) do |form| %>
-  <% if employee.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+<style>
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
 
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.form-submit:hover {
+  background-color: #0056b3;
+}
+
+.error-messages {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #d9534f;
+  background-color: #f2dede;
+  color: #a94442;
+  border-radius: 5px;
+}
+
+.error-messages h2 {
+  margin-top: 0;
+}
+
+.error-messages ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+</style>
+
+
+<%= form_with(model: employee, local: true, html: { class: 'form-container' }) do |form| %>
+  <% if employee.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
       <ul>
-        <% employee.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% employee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+  <div class="form-group">
+    <%= form.label :first_name, class: 'form-label' %>
+    <%= form.text_field :first_name, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+  <div class="form-group">
+    <%= form.label :last_name, class: 'form-label' %>
+    <%= form.text_field :last_name, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="form-group">
+    <%= form.label :email, class: 'form-label' %>
+    <%= form.text_field :email, class: 'form-input' %>
   </div>
 
-  <div>
-     <%= form.label :designation %>
-     <%= form.collection_select :designation, Employee.designations.keys, :to_s, :humanize, prompt: 'Select Designation' %>
+  <div class="form-group">
+    <%= form.label :designation, class: 'form-label' %>
+    <%= form.collection_select :designation, Employee.designations.keys, :to_s, :humanize, { prompt: 'Select Designation' }, { class: 'form-select' } %>
   </div>
 
-  <div>
-    <%= form.label :department_id, 'Department' %>
-    <%= form.collection_select :department_id, @departments, :id, :name, prompt: 'Select Department' %>
+  <div class="form-group">
+    <%= form.label :department_id, 'Department', class: 'form-label' %>
+    <%= form.collection_select :department_id, @departments, :id, :name, { prompt: 'Select Department' }, { class: 'form-select' } %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit 'Submit', class: 'form-submit' %>
   </div>
 <% end %>

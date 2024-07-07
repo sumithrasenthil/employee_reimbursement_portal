@@ -1,14 +1,84 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f0f0f0;
+    }
 
-<h1>Employees</h1>
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-<div id="employees">
-  <% @employees.each do |employee| %>
-    <%= render employee %>
-    <p>
-      <%= link_to "Show this employee", employee %>
-    </p>
-  <% end %>
-</div>
+    .employee {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-<%= link_to "New employee", new_employee_path %>
+    .employee p {
+      margin: 10px 0;
+    }
+
+    .employee a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .employee a:hover {
+      text-decoration: underline;
+    }
+
+    .new-employee-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .new-employee-link:hover {
+      background-color: #0056b3;
+    }
+
+    .notice {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="notice"><%= notice %></div>
+
+  <h1>Employees</h1>
+
+  <div id="employees">
+    <% @employees.each do |employee| %>
+      <div class="employee">
+        <%= render employee %>
+        <p>
+          <%= link_to "Show this employee", employee, class: "show-employee-link" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div style="text-align: center;">
+    <%= link_to "New Employee", new_employee_path, class: "new-employee-link" %>
+  </div>
+</body>
+</html>
