@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    .notice {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .employee-details {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .actions {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .actions a, .actions button, .actions input[type="submit"] {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 10px; /* Adjusted margin for spacing between buttons */
+      text-decoration: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: #007bff;
+      border: none;
+    }
+
+    .actions a.back-link {
+      background-color: #6c757d;
+    }
+
+    .actions a:hover, .actions button:hover, .actions input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .actions a.back-link:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <p class="notice"><%= notice %></p>
+
+  <div class="employee-details">
+    <%= render @employee %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Edit", edit_employee_path(@employee) %><br> <br>
+    <%= button_to "Delete", @employee, method: :delete, data: { confirm: "Are you sure?" }%>
+  </div>
+</body>
+</html>

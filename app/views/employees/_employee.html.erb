@@ -1,0 +1,92 @@
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 30px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      font-size: 18px;
+      line-height: 1.6;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .details:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .details strong {
+      display: inline-block;
+      min-width: 120px;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Employee Details</h1>
+    </div>
+
+    <div class="details">
+      <strong>First Name:</strong>
+      <%= employee.first_name %>
+    </div>
+
+    <div class="details">
+      <strong>Last Name:</strong>
+      <%= employee.last_name %>
+    </div>
+
+    <div class="details">
+      <strong>Email:</strong>
+      <%= employee.email %>
+    </div>
+
+    <div class="details">
+      <strong>Designation:</strong>
+      <%= employee.designation %>
+    </div>
+
+    <div class="details">
+      <strong>Department:</strong>
+      <%= employee.department.name %>
+    </div>
+  </div>
+</body>

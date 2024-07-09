@@ -1,0 +1,59 @@
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .actions a {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .actions a:hover {
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .actions a + a {
+      margin-left: 10px;
+    }
+  </style>
+<body>
+  <h1>Editing employee</h1>
+
+  <div class="form-container">
+    <%= render "form", employee: @employee %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Show this employee", @employee, class: "btn btn-primary" %> |
+    <%= link_to "Back to employees", employees_path, class: "btn btn-secondary" %>
+  </div>
+</body>

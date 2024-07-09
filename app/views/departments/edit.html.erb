@@ -1,0 +1,98 @@
+
+    <title>Editing Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .link {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .form-container footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
+<main>
+    <header>
+        <h1>Editing Department</h1>
+    </header>
+
+    <section class="form-container">
+        <%= render "form", department: @department %>
+        <footer>
+            <a class="link" href="<%= department_path(@department) %>">Show this department</a> |
+            <a class="link" href="<%= departments_path %>">Back to departments</a>
+        </footer>
+    </section>
+</main>
+
